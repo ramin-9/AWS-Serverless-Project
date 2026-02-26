@@ -1,15 +1,17 @@
 import json
+#break URL string into components
 import urllib.parse
+#AWS SDK for python
 import boto3
 
 print('Loading function')
 
 s3 = boto3.client('s3')
 
-
+# event is object that includes payload service invoke lambda function
+#context is runtime information about function or execution environment
 def lambda_handler(event, context):
    
-
     # Get the object from the event and show its content type
     bucket = event['Records'][0]['s3']['bucket']['name']
     key = urllib.parse.unquote_plus(event['Records'][0]['s3']['object']['key'], encoding='utf-8')
